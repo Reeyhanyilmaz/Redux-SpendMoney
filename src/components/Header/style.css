@@ -1,0 +1,16 @@
+.header-div{
+    font-size: 32px;
+    background: #fff;
+    padding: 30px 20px;
+    margin-bottom: 10px;
+    font-weight: 700;
+    line-height: 1.3em;
+}
+
+.header-img{
+    display: block;
+    width: 125px;
+    height: 125px;
+    margin: 10px auto 25px;
+    border-radius: 125px;
+}
