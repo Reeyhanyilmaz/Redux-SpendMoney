@@ -15,9 +15,11 @@ function Items() {
     <div className='items-div'>
       {
         products.map((product) => (
-          <div key={product.id}>
-            <img src={product.image}/>
-            <span>{product.productPrice}</span>
+          <div key={product.id} className="items">
+            <img src={product.image} className="itemsImage" />
+            <span>{product.productName}</span>
+            <br />
+            <span>{product.productPrice}$</span>         
           </div>
         ))
       }
