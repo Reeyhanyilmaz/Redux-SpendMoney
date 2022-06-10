@@ -22,3 +22,17 @@
     margin: 10px;
 }
 
+
+.btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 50px;
+    width: 60px;
+    font-size: 17px;
+}
+
+.count-span{
+    border: 1px solid #ccc;
+    padding: 2px 20px;
+    margin: 0 10px;
+}

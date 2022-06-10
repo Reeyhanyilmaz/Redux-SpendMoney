@@ -19,7 +19,13 @@ function Items() {
             <img src={product.image} className="itemsImage" />
             <span>{product.productName}</span>
             <br />
-            <span>{product.productPrice}$</span>         
+            <span style={{color: "green"}}>${product.productPrice}</span> 
+            <br />
+            <div>
+              <button className='btn'>Sell</button>
+              <span className='count-span'>0</span>
+              <button className='btn' style={{backgroundColor: "green", color: "white"}}>Buy</button>
+              </div>        
           </div>
         ))
       }
