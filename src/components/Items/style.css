@@ -25,6 +25,7 @@
 
 .btn {
     padding: 5px 10px;
+    cursor: pointer;
     border: none;
     border-radius: 50px;
     width: 60px;
@@ -33,6 +34,9 @@
 
 .count-span{
     border: 1px solid #ccc;
-    padding: 2px 20px;
+    border-radius: 8px;
+    padding: 5px 13px;
     margin: 0 10px;
+    text-align: center;
+    width: 40px;
 }
