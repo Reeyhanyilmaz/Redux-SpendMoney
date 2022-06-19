@@ -85,10 +85,10 @@ function Items({id}) {
             <span style={{color: "green"}}>${product.productPrice}</span> 
             <br />
             <div>
-              <button className='btn' onClick={() => sell()}>Sell</button>          
+              <button className='btn' disabled={sellable} onClick={() => sell()}>Sell</button>          
               <input type='number' className='count-span' value={count} onChange={(e)=>handleChange(e.target.value)} />
 
-              <button className='btn'  onClick={() => buy()} style={{backgroundColor: "green", color: "white"}}>Buy</button>
+              <button className='btn' disabled={buyable} onClick={() => buy()} style={{backgroundColor: "green", color: "white"}}>Buy</button>
               </div>        
           </div>
         ))
