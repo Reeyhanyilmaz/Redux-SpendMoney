@@ -5,9 +5,9 @@ export const store = configureStore({
     reducer: {
         products: productsSlice,
     },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware({
-        serializableCheck: false
-    }),
+    // middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+    //     serializableCheck: false
+    // }),
 });
 
     
