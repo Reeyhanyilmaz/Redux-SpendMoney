@@ -7,6 +7,7 @@ export const fetchProducts = createAsyncThunk(
     const res = await axios(
       `${process.env.REACT_APP_API_BASE_ENDPOINT}/spendMoneyJSON`
     );
+    // console.log("res.data",res.data);
     return res.data;
   }
 );
