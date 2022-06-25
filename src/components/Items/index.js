@@ -1,69 +1,72 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useState, useCallback} from 'react';
 import { useDispatch , useSelector} from 'react-redux';
-import { fetchProducts, updateCount } from '../../redux/products/productsSlice';
+import { fetchProducts, updateCount, handleChange } from '../../redux/products/productsSlice';
 import "./style.css";
 
 function Items({id}){
-
-  const items = useSelector((state) => state.products.items);
-  console.log('items', items)
-
-  const value = useSelector(state => state.products.value);
-  const money = useSelector(state => state.products.money);
-
-  const item = items.find(x=> x.id === id);
-  console.log('item ', item);
-
   const dispatch = useDispatch();
-
-  const [count, setCount] = useState(item.count);
-  const [buyable , setBuyable] = useState(false); 
-  const [sellable, setSellable ] = useState(true);
-
-  let maxBuy = Math.floor(value / item.productPrice);
-  let max = Number(count) + Number(maxBuy); 
-  // değeri ürün fiyatına bölüyoruz, ürün adedi ile topluyoruz ne kadar alınabilir onu hesaplıyoruz.
 
   useEffect(() => {
     dispatch(fetchProducts());
-    control();
   },[dispatch]);
 
+  const items = useSelector((state) => state.products.items);
+  const item = items !== [] || items !== undefined ? items.find((x) => x.id === id) : null;
+  
+  console.log('items', items)
+  console.log('item ', item);
+
+  const money = useSelector(state => state.products.money);
+
+  const [count, setCount] = useState(items.count);
+  const [buyable , setBuyable] = useState(false); 
+  const [sellable, setSellable ] = useState(true);
+
+  let maxBuy = Math.floor(money / items.productPrice);
+  let max = Number(count) + Number(maxBuy); 
+  // değeri ürün fiyatına bölüyoruz, ürün adedi ile topluyoruz ne kadar alınabilir onu hesaplıyoruz.
+
   //sell butonu sıfır ve sıfırdan küçükse disable olması için.
-  const control =()=>{
+  //for callback error (returns a memoized callback function, caching a value so that it does not need to be recalculated)
+  const control = useCallback(()=>{
     if(count > 0){
       setSellable(false);
     }
-    if(count === 0){
+    if(count == 0){
       setSellable(true);
     }
-  }
+  },[count]);
+
+  useEffect(() => {
+    control();
+  },[control]);
   
   useEffect(() => {
-    if(item.productPrice > value){ //ürün fiyatı paramızdan fazlaysa true yap.
+    if(items.productPrice > money){ //ürün fiyatı paramızdan fazlaysa true yap.
       setBuyable(true);
     }
-    if(item.productPrice <= value){
+    if(items.productPrice <= money){
       setBuyable(false);
     }
-  },[value]);
+  },[money, items.productPrice]);
 
   //count(kaç adet) değerlerimiz için.
-  const handleChange = async (val, id, count) => {
-    if(val > max && value > 0){
-      setCount(max);
+  const handleChange = async (value) =>{
+    if(value>max && money>0 ){
+      setCount(max)
     }
-    else if(val <0){
+    else if(value<0){
       setCount(0);
     }
-    else if (value === 0 && val < count){
-      setCount(val);
+    else if(money == 0 && value<count){
+      setCount(value);
     }
-    else {
-      setCount(val);
-    }    
-    await dispatch(updateCount({id: item.id, count: count}))
+    else{
+      setCount(value);
+    }
+    await dispatch(updateCount({id: items.id, count: count}))
   }
+
 
   const buy = () => {
     handleChange(Number(count) + 1);
@@ -72,6 +75,11 @@ function Items({id}){
    const sell = () => {
      handleChange(Number(count) - 1);
    }
+  
+  //  const handleClickBtn = (id, count) => {
+  //   dispatch(handleChange({id: items.id, count: count}))
+  //   dispatch(updateCount({id: items.id, count: count}));
+  // }
   
 
   return (
@@ -85,8 +93,11 @@ function Items({id}){
             <span style={{color: "green"}}>${product.productPrice}</span> 
             <br />
             <div>
-              <button className='btn' disabled={sellable} onClick={() => sell()}>Sell</button>          
-              <input type='number' className='count-span' value={count} onChange={(e)=>handleChange(e.target.value)} />
+              {/* <button className='btn' disabled={sellable} onClick={() => handleClickBtn(product.id, product.count)}>Sell</button>           */}
+              {/* <input type='number' className='count-span' value={product.count} onChange={(e)=>dispatch(updateCount(e.target.value))} /> */}
+              
+              <button className='btn' disabled={sellable} onClick={() => sell()} style={{backgroundColor: "green", color: "white"}}>Buy</button>
+               <input type='number' className='count-span' value={product.count} onChange={(e)=>handleChange(e.target.value)} />
               <button className='btn' disabled={buyable} onClick={() => buy()} style={{backgroundColor: "green", color: "white"}}>Buy</button>
               </div>        
           </div>
@@ -94,6 +105,7 @@ function Items({id}){
       }
     </div>
   );
+
 }
 
 
