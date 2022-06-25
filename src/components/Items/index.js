@@ -25,7 +25,7 @@ function Items(){
             <br />
             <div>
               <button className='btn' 
-              disabled={product.count === "0"} 
+              disabled={product.count === "0"  || product.count === 0}
               onClick={(e) => dispatch(handleChange({id: product.id, count: Number(product.count), newCount: Number(product.count - 1)}))}>
               Sell</button>
                <input type='number' min="0" className='count-span' value={product.count} 
