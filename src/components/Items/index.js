@@ -2,6 +2,8 @@ import {useEffect} from 'react';
 import { useDispatch , useSelector} from 'react-redux';
 import { fetchProducts, handleChange } from '../../redux/products/productsSlice';
 import "./style.css";
+import Receipt from '../Receipt'
+
 
 function Items(){
 
@@ -38,6 +40,7 @@ function Items(){
           </div>
         ))
       }
+      {/* <Receipt newCount={(e)=> Number(e.target.value)}/> */}
     </div>
   );
 }

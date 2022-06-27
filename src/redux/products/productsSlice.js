@@ -18,6 +18,9 @@ export const productsSlice = createSlice({
     items: [],
     oldMoney: 100000000000, //paramız (100 milyon).
     newMoney: 100000000000, //değişen paramızın değeri.
+    receiptItems: [],
+    receiptMoney: 0,
+
   },
   reducers: {
     handleChange: (state, action) => {
@@ -46,8 +49,19 @@ export const productsSlice = createSlice({
         state.newMoney = state.oldMoney + totalPrice;
         item.count = newCount;
         state.oldMoney = state.newMoney; //bunu yazmazsak diğer item satışında 100 milyona ekleme yapıyor. 
-        //Tekrar tekrar parayı 100 milyon yapma paramız eksilen/azalan para miktarındna hesaplama yap diyoruz burada.
-      }    
+        //Tekrar tekrar parayı 100 milyon yapma paramız eksilen/azalan para miktarındna hesaplama yap diyoruz burada.   
+      }   
+           
+      //for receipt part*******************************************    
+      const filtered = state.items.find(item => item.count > 0);
+      if(filtered){
+        state.receiptItems.push(filtered);   
+      }
+
+      //total olacak kısım
+      // state.receiptItems.map(item => {
+      //   state.receiptMoney += item.productPrice * item.newCount;       
+      // })
     },
   },
   extraReducers: {
@@ -57,5 +71,5 @@ export const productsSlice = createSlice({
   },
 });
 
-export const { handleChange } = productsSlice.actions;
+export const { handleChange} = productsSlice.actions;
 export default productsSlice.reducer;
