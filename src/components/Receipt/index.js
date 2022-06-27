@@ -1,22 +1,28 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-function Receipt() {
+function Receipt({newCount}) {
   const receiptItems = useSelector((state) => state.products.receiptItems);
   return (
     <div>
-      <h1>Your Receipt</h1>
-        <div className="receipt-div">
-            {receiptItems.map((item, i) => (
-                <div key={i} className="receipt-items">
-                    <span>{item.productName}</span>
-                    <span style={{color: "green"}}>${item.productPrice}</span>
-                    <span>{item.count}</span>
-                </div>
-            ))}
-        </div>
+      <div className="receipt-div" style={{textAlign: "center"}}>
+        <h1>Your Receipt</h1>
+        {receiptItems.map((item, i) => (
+          <div
+            key={i}
+            className="receipt-items"
+            style={{
+              display: "flex",
+              flexDirection: "row"}}
+          >
+            <span style={{padding: "5px"}}>{item.productName}</span>        
+            <span style={{padding: "5px"}}>x {item.count}</span>
+            <span style={{ color: "green", padding: "5px" }}>${item.productPrice}</span>
+          </div>
+        ))}
+      </div>
     </div>
-    );
+  );
 }
 
 export default Receipt;

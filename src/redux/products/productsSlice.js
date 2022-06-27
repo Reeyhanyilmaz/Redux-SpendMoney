@@ -52,10 +52,15 @@ export const productsSlice = createSlice({
         //Tekrar tekrar parayı 100 milyon yapma paramız eksilen/azalan para miktarındna hesaplama yap diyoruz burada.   
       }   
            
-      //for receipt part*******************************************    
+      //for receipt part*******************************************        
       const filtered = state.items.find(item => item.count > 0);
-      if(filtered){
-        state.receiptItems.push(filtered);   
+      if(filtered){       
+        state.receiptItems.push(item);
+        item.count  = newCount;
+
+        // count > 0 ? state.receiptMoney += totalPrice : state.receiptMoney -= totalPrice;
+        // state.receiptMoney = state.newMoney; 
+        // state.receiptItems.push(filtered);
       }
 
       //total olacak kısım
