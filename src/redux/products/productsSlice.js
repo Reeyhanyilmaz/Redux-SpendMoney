@@ -56,17 +56,12 @@ export const productsSlice = createSlice({
       const filtered = state.items.find(item => item.count > 0);
       if(filtered){       
         state.receiptItems.push(item);
+        // state.receiptItems.push(filtered);
         item.count  = newCount;
 
-        // count > 0 ? state.receiptMoney += totalPrice : state.receiptMoney -= totalPrice;
-        // state.receiptMoney = state.newMoney; 
-        // state.receiptItems.push(filtered);
+        //total değerini verecek kısım.
+        countDifference > 0 ? state.receiptMoney += totalPrice : state.receiptMoney -= totalPrice;      
       }
-
-      //total olacak kısım
-      // state.receiptItems.map(item => {
-      //   state.receiptMoney += item.productPrice * item.newCount;       
-      // })
     },
   },
   extraReducers: {
