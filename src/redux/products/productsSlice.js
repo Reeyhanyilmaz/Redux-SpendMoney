@@ -7,7 +7,6 @@ export const fetchProducts = createAsyncThunk(
     const res = await axios(
       `${process.env.REACT_APP_API_BASE_ENDPOINT}/spendMoneyJSON`
     );
-    // console.log("res.data",res.data);
     return res.data;
   }
 );
@@ -16,7 +15,7 @@ export const productsSlice = createSlice({
   name: "products",
   initialState: {
     items: [],
-    oldMoney: 100000000000, //paramız (100 milyon).
+    oldMoney: 100000000000, //paramız (100 milyar).
     newMoney: 100000000000, //değişen paramızın değeri.
     receiptItems: [],
     receiptMoney: 0,
@@ -25,12 +24,8 @@ export const productsSlice = createSlice({
   reducers: {
     handleChange: (state, action) => {
       const { id, count, newCount } = action.payload;
-      console.log("action", action);
-      console.log("action.payload ", action.payload);
-      console.log("id, count, newCount", id, count, newCount);
 
       const item = state.items.find((item) => item.id === id);
-      console.log("item", item);
 
       state.oldMoney = state.newMoney;
 
@@ -45,13 +40,10 @@ export const productsSlice = createSlice({
         } else {
           state.newMoney = state.oldMoney - totalPrice;
           item.count = newCount;
-          // state.oldMoney = state.newMoney; //bunu yazmazsak diğer item aldığımızda tekrar 100 milyondan fiyat düşüyor.
         }
       } else { //satış
         state.newMoney = state.oldMoney + totalPrice;
         item.count = newCount;
-        // state.oldMoney = state.newMoney; //bunu yazmazsak diğer item satışında 100 milyona ekleme yapıyor. 
-        //Tekrar tekrar parayı 100 milyon yapma paramız eksilen/azalan para miktarındna hesaplama yap diyoruz burada.   
       }
 
       //for receipt part*******************************************        

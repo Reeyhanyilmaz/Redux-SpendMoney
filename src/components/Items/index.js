@@ -1,20 +1,18 @@
-import {useEffect} from 'react';
-import { useDispatch , useSelector} from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts, handleChange } from '../../redux/products/productsSlice';
 import "./style.css";
-import Receipt from '../Receipt'
 
-
-function Items(){
+function Items() {
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchProducts());
-  },[dispatch]);
+  }, [dispatch]);
 
   const items = useSelector((state) => state.products.items);
-  
+
   return (
     <div className='items-div'>
       {
@@ -23,24 +21,22 @@ function Items(){
             <img alt={product.productName} src={product.image} className="itemsImage" />
             <span>{product.productName}</span>
             <br />
-            <span style={{color: "green"}}>${product.productPrice}</span> 
+            <span style={{ color: "green" }}>${product.productPrice}</span>
             <br />
             <div>
-              <button className='btn' 
-              disabled={product.count === "0"  || product.count === 0}
-              onClick={(e) => dispatch(handleChange({id: product.id, count: Number(product.count), newCount: Number(product.count - 1)}))}>
-              Sell</button>
-               <input type='number' min="0" className='count-span' value={product.count} 
-               onChange={(e)=>dispatch(handleChange({id: product.id, count: Number(product.count), newCount: Number(e.target.value)}))} />
-              <button className='btn' 
-              // disabled={buyable} 
-              onClick={(e) => dispatch(handleChange({id: product.id, count: Number(product.count), newCount: Number(product.count + 1)}))}
-              style={{backgroundColor: "green", color: "white"}}>Buy</button>
-              </div>        
+              <button className='btn'
+                disabled={product.count === "0" || product.count === 0}
+                onClick={(e) => dispatch(handleChange({ id: product.id, count: Number(product.count), newCount: Number(product.count - 1) }))}>
+                Sell</button>
+              <input type='number' min="0" className='count-span' value={product.count}
+                onChange={(e) => dispatch(handleChange({ id: product.id, count: Number(product.count), newCount: Number(e.target.value) }))} />
+              <button className='btn'
+                onClick={(e) => dispatch(handleChange({ id: product.id, count: Number(product.count), newCount: Number(product.count + 1) }))}
+                style={{ backgroundColor: "green", color: "white" }}>Buy</button>
+            </div>
           </div>
         ))
       }
-      {/* <Receipt newCount={(e)=> Number(e.target.value)}/> */}
     </div>
   );
 }
