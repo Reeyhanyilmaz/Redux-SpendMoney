@@ -8,7 +8,7 @@ function Receipt() {
     <>
       {receiptMoney > 0 ? (
         <div className="receipt-div">
-          <h1>Your Receipt</h1>
+          <h2>Your Receipt</h2>
           {receiptItems.map((item, i) => (
             <div key={i} className="receipt-items">
               <span style={{ padding: "5px" }}>{item.productName}</span>
