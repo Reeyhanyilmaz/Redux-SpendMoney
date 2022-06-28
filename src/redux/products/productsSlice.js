@@ -36,7 +36,7 @@ export const productsSlice = createSlice({
 
       const countDifference = newCount - count; //count adedimiz , newCount basınca değişecek değerimiz.
 
-      const totalPrice = item.productPrice * Math.abs(countDifference);
+      const totalPrice = Number(item.productPrice) * Math.abs(countDifference);
 
       if (countDifference > 0) { //alım
               if (totalPrice > state.newMoney) {

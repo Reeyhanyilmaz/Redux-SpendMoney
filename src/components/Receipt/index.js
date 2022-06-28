@@ -14,14 +14,14 @@ function Receipt() {
               <span style={{ padding: "5px" }}>{item.productName}</span>
               <span style={{ padding: "5px" }}>x {item.count}</span>
               <span style={{ color: "green", padding: "5px" }}>
-                ${item.productPrice}
+                ${item.productPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
               </span>
             </div>
           ))}
           <hr style={{width: "300px"}}/>
           <div className="receipt-total">
             <span>Total: </span>
-            <span style={{ color: "green" }}>${receiptMoney}</span>
+            <span style={{ color: "green" }}>${receiptMoney.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}</span>
           </div>
         </div>
       ) : (

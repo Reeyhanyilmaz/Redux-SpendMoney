@@ -2,8 +2,6 @@ import {useEffect} from 'react';
 import { useDispatch , useSelector} from 'react-redux';
 import { fetchProducts, handleChange } from '../../redux/products/productsSlice';
 import "./style.css";
-import Receipt from '../Receipt'
-
 
 function Items(){
 
@@ -23,7 +21,7 @@ function Items(){
             <img alt={product.productName} src={product.image} className="itemsImage" />
             <span>{product.productName}</span>
             <br />
-            <span style={{color: "green"}}>${product.productPrice}</span> 
+            <span style={{color: "green"}}>${product.productPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}</span> 
             <br />
             <div>
               <button className='btn' 
