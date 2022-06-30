@@ -34,3 +34,21 @@
   padding: 6px 0;
   font-size: 20px;
 }
+
+
+@media (max-width: 768px) {
+  .header-div {
+    font-size: 20px;
+  }
+  .selectMenu-div {
+    height: 130px;
+  }
+
+  .selectMenu {
+    font-size: 17px;
+  }
+
+  .header-p{
+    font-size: 20px;
+  }
+}
