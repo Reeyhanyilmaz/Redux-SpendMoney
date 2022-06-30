@@ -4,3 +4,22 @@
   margin: 50px auto 50px auto;
   height: auto;
 }
+
+/*scroll button*/
+.back-to-top {
+  position: fixed;
+  bottom: 33px;
+  right: 100px;
+  font-size: 17px;
+  background: rgb(204, 204, 255);
+  color: white;
+  cursor: pointer;
+  border-radius: 100px;
+  border: none;
+  box-shadow: 0 3px 3px #ccc;
+  padding: 10px;
+}
+
+.back-to-top:hover {
+  background: rgb(153, 153, 239);
+}
