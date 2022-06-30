@@ -10,5 +10,3 @@ https://reyhan-redux-spend-money.netlify.app/
 ![ss-1](/public/assets/ss-1.png)
 ![ss-2](/public/assets/ss-2.png)
 ![ss-3](/public/assets/ss-3.png)
-![ss-4](/public/assets/ss-4.png)
-
