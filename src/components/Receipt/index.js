@@ -13,7 +13,7 @@ function Receipt() {
             <div key={i} className="receipt-items">
               <span style={{ padding: "5px" }}>{item.productName}</span>
               <span style={{ padding: "5px" }}>x {item.count}</span>
-              <span style={{ color: "green", padding: "5px" }}>
+              <span style={{ color: "rgb(153, 153, 239)", padding: "5px" }}>
                 ${item.productPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
               </span>
             </div>
@@ -21,7 +21,7 @@ function Receipt() {
           <hr style={{width: "300px"}}/>
           <div className="receipt-total">
             <span>Total: </span>
-            <span style={{ color: "green" }}>${receiptMoney.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}</span>
+            <span style={{ color: "rgb(153, 153, 239)" }}>${receiptMoney.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}</span>
           </div>
         </div>
       ) : (

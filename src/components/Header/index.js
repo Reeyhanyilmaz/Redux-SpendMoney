@@ -9,7 +9,7 @@ function Header() {
   return (
     <>
       <div className="selectMenu-div">
-        <p style={{ fontSize: "30px", fontWeigth: "400" }}> Whose money do you want to spend?</p>
+        <p className="header-p"> Whose money do you want to spend?</p>
         <select
           onChange={(e) => dispatch(changeSelectedUser(e.target.value))}
           className="selectMenu"

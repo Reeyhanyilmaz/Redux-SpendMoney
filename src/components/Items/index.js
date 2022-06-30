@@ -40,7 +40,7 @@ function Items(){
             <img alt={product.productName} src={product.image} className="itemsImage" />
             <span>{product.productName}</span>
             <br />
-            <span style={{color: "green"}}>${product.productPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}</span> 
+            <span style={{color: "rgb(153, 153, 239)"}}>${product.productPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}</span> 
             <br />
             <div>
               <button className='btn' 
@@ -51,7 +51,7 @@ function Items(){
                onChange={(e)=>dispatch(handleChange({id: product.id, count: Number(product.count), newCount: Number(e.target.value)}))} />
               <button className='btn'
               onClick={(e) => dispatch(handleChange({id: product.id, count: Number(product.count), newCount: Number(product.count + 1)}))}
-              style={{backgroundColor: "green", color: "white"}}>Buy</button>
+              style={{backgroundColor: "rgb(153, 153, 239)", color: "white"}}>Buy</button>
                <ToastContainer />
               </div>        
           </div>

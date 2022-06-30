@@ -1,12 +1,11 @@
 .money-div{
     color: #fff;
-    background-color: #2ecc71;
-    background: linear-gradient(180deg,#2ecc71,#1abc9c);
+    background: linear-gradient(35deg, #ccffff, #ffcccc, rgb(204, 204, 255));
     padding: 20px;
     margin: 10px 0;
     font-family: Roboto,sans-serif;
     font-size: 32px;
-    font-weight: 700;
+    font-weight: 00;
     text-align: center;
     top: 0;
     position: sticky;
