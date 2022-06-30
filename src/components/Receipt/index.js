@@ -25,7 +25,7 @@ function Receipt() {
           </div>
         </div>
       ) : (
-        <h3>No items in your receipt</h3>
+        <p style={{fontSize: "30px" , fontWeigth: "400"}}>No items in your receipt</p>
       )}
     </>
   );
