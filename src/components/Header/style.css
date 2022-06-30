@@ -1,16 +1,31 @@
-.header-div{
-    font-size: 32px;
-    background: #fff;
-    padding: 30px 20px;
-    margin-bottom: 10px;
-    font-weight: 700;
-    line-height: 1.3em;
+.header-div {
+  font-size: 30px;
+  background: #fff;
+  padding: 30px 20px;
+  font-weight: 400;
+  line-height: 1.3em;
 }
 
-.header-img{
-    display: block;
-    width: 125px;
-    height: 125px;
-    margin: 10px auto 25px;
-    border-radius: 125px;
+.header-img {
+  display: block;
+  width: 125px;
+  height: 125px;
+  margin: 10px auto 25px;
+  border-radius: 125px;
+}
+
+.selectMenu-div {
+  max-width: 1000px;
+  background-color: #fff;
+  margin: 10px 0;
+  height: 160px;
+  padding: 1px 0;
+}
+
+.selectMenu {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 6px 0;
+  font-size: 20px;
 }
